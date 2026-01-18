@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 
-const useCountStore = create(
+const useSavingsStore = create(
   combine({ product: {} }, (set, get) => ({
     addProduct: item =>
       set(state => ({
@@ -13,4 +13,4 @@ const useCountStore = create(
   }))
 );
 
-export default useCountStore;
+export default useSavingsStore;
