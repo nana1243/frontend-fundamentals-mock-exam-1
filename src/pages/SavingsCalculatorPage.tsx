@@ -1,11 +1,21 @@
 import { Border, colors, ListHeader, ListRow, NavigationBar, Spacing, Tab } from 'tosslib';
 import SavingUserInputLayout from '../components/SavingsUserInputLayout';
+import useSavingsProduct from '../api/savings/savings.query';
+import { useState } from 'react';
 
 export function SavingsCalculatorPage() {
+  const { data } = useSavingsProduct();
+  const [userSavingsInputData, setUserSavingsInputData] = useState({ targetAmount: 0, monthlyAmount: 0, period: 12 });
+
+  const handleUserInputChange = (id, targetData) => {
+    console.log('id, targetData', id, targetData);
+    setUserSavingsInputData(prev => ({ ...prev, [id]: targetData }));
+  };
+
   return (
     <>
       <NavigationBar title="적금 계산기" />
-      <SavingUserInputLayout values={{ targetAmount: '', monthlyAmount: '', period: 12 }} onChange={() => {}} />
+      <SavingUserInputLayout values={userSavingsInputData} onChange={handleUserInputChange} />
 
       <Spacing size={24} />
       <Border height={16} />

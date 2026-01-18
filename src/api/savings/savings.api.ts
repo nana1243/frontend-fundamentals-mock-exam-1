@@ -1,8 +1,7 @@
 import { http } from 'tosslib';
 
 const getProducts = async () => {
-  const response = await http.get('/api/savings-products');
-  console.log(response);
+  return await http.get('/api/savings-products');
 };
 
 export { getProducts };

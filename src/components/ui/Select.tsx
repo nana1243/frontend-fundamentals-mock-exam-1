@@ -17,14 +17,6 @@ interface SelectBottomSheetProps<T> {
   className: string;
 }
 
-const Option = <T,>({ value, label }: OptionProps<T>) => {
-  return (
-    <>
-      <SelectBottomSheet.Option value={value}>{label}</SelectBottomSheet.Option>
-    </>
-  );
-};
-
 const Select = <T,>({ label, title, children, value, onChange, className }: SelectBottomSheetProps<T>) => {
   return (
     <SelectBottomSheet label={label} title={title} value={value} onChange={onChange} className={className}>
@@ -33,6 +25,6 @@ const Select = <T,>({ label, title, children, value, onChange, className }: Sele
   );
 };
 
-Select.Option = Option;
+Select.Option = SelectBottomSheet.Option;
 
 export default Select;
