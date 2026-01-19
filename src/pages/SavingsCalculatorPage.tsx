@@ -1,12 +1,10 @@
-import { Border, colors, ListHeader, ListRow, NavigationBar, Spacing, Tab, Assets } from 'tosslib';
+import { Border, NavigationBar, Spacing } from 'tosslib';
 import SavingUserInputLayout from '../components/SavingsUserInputLayout';
-import useSavingsProduct from '../api/savings/savings.query';
 import { useState } from 'react';
 import SavingsResultLayout from '../components/SavingsResultLayout';
-import {TAB_VALUES} from "../constants/savings";
+import { TAB_VALUES } from '../constants/savings';
 
 export function SavingsCalculatorPage() {
-  const { data } = useSavingsProduct();
   const [userSavingsInputData, setUserSavingsInputData] = useState({ targetAmount: 0, monthlyAmount: 0, period: 12 });
   const [tabValue, setTabValue] = useState(TAB_VALUES[0].value);
 
