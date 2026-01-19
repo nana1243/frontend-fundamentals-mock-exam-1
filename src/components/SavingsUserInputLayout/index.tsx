@@ -39,6 +39,7 @@ const SavingUserInputLayout = ({ values, onChange }) => {
                   ))
                 : null}
             </Component>
+            <Spacing size={24} />
           </Fragment>
         );
       })}

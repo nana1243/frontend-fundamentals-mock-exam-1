@@ -15,4 +15,15 @@ const USER_INPUT_CONFIG = [
   },
 ] as const;
 
-export { USER_INPUT_CONFIG };
+const TAB_VALUES = [
+  {
+    value: 'PRODUCT',
+    label: '적금 상품',
+  },
+  {
+    value: 'RESULT',
+    label: '계산 결과',
+  },
+];
+
+export { USER_INPUT_CONFIG, TAB_VALUES };
