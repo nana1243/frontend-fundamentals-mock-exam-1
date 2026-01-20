@@ -3,8 +3,11 @@ import Input from '../ui/Input';
 import { Spacing } from 'tosslib';
 import Select from '../ui/Select';
 import { USER_INPUT_CONFIG } from '../../constants/savings';
+import useSavingsStore from '../../store/savings/useSavingsStore';
 
-const SavingUserInputLayout = ({ values, onChange }) => {
+const SavingUserInputLayout = ({ onChange }) => {
+  const userInputSavingValues = useSavingsStore(state => state.userInputSavingValues);
+  console.log('setUserInputValues', userInputSavingValues);
   const INPUT_COMPONENTS: Record<string, any> = {
     input: Input,
     select: Select,
@@ -24,7 +27,7 @@ const SavingUserInputLayout = ({ values, onChange }) => {
             {index !== 0 && <Spacing size={16} />}
             <Component
               {...restProps}
-              value={values[data.id]}
+              value={userInputSavingValues && userInputSavingValues[data.id]}
               onChange={val => {
                 console.log('val', val);
                 const finalValue = val?.target ? val.target.value : val;

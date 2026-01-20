@@ -3,14 +3,16 @@ import SavingUserInputLayout from '../components/SavingsUserInputLayout';
 import { useState } from 'react';
 import SavingsResultLayout from '../components/SavingsResultLayout';
 import { TAB_VALUES } from '../constants/savings';
+import useSavingsStore from '../store/savings/useSavingsStore';
 
 export function SavingsCalculatorPage() {
-  const [userSavingsInputData, setUserSavingsInputData] = useState({ targetAmount: 0, monthlyAmount: 0, period: 12 });
   const [tabValue, setTabValue] = useState(TAB_VALUES[0].value);
+
+  const { setUserInputValues } = useSavingsStore();
 
   const handleUserInputChange = (id, targetData) => {
     console.log('id, targetData', id, targetData);
-    setUserSavingsInputData(prev => ({ ...prev, [id]: targetData }));
+    setUserInputValues({ [id]: targetData });
   };
 
   const handleTabChange = (value: string) => {
@@ -21,7 +23,7 @@ export function SavingsCalculatorPage() {
   return (
     <>
       <NavigationBar title="적금 계산기" />
-      <SavingUserInputLayout values={userSavingsInputData} onChange={handleUserInputChange} />
+      <SavingUserInputLayout onChange={handleUserInputChange} />
 
       <Border height={16} />
       <Spacing size={8} />

@@ -1,9 +1,13 @@
 import { Assets, colors, ListRow, Spacing } from 'tosslib';
 import useSavingsProduct from '../../api/savings/savings.query';
+import useSavingsStore from '../../store/savings/useSavingsStore';
 
 const SavingProducts = () => {
   const { data, isLoading, isError } = useSavingsProduct();
-  console.log('data', data);
+  const { setUserInputValues } = useSavingsStore();
+
+  const handleClick = () => {};
+
   return (
     <>
       <Spacing size={8} />

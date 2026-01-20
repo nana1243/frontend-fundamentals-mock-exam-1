@@ -26,4 +26,6 @@ const TAB_VALUES = [
   },
 ];
 
-export { USER_INPUT_CONFIG, TAB_VALUES };
+const TAX_FACTOR = 0.846;
+
+export { USER_INPUT_CONFIG, TAB_VALUES, TAX_FACTOR };
