@@ -9,6 +9,7 @@ const SavingExpectedResults = (props: SavingExpectedResultsProps) => {
   const { selectedProductId, listRowConfigData } = props;
   return (
     <>
+      <Spacing size={8} />
       {!selectedProductId ? (
         <>
           <Spacing size={40} />
