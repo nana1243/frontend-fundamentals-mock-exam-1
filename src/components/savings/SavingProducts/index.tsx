@@ -2,7 +2,7 @@ import { Assets, colors, ListRow, Spacing } from 'tosslib';
 import useSavingsProduct from '../../../api/savings/savings.query';
 
 interface SavingProductsProps {
-  selectedProductId: string;
+  selectedProductId: string | null;
   handleClick: (itemId: string) => void;
 }
 
