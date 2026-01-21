@@ -1,5 +1,5 @@
-import TabComponent from '../ui/Tab';
-import { TAB_VALUES } from '../../constants/savings';
+import TabComponent from '../../ui/Tab';
+import { TAB_VALUES } from '../../../constants/savings';
 import SavingProducts from '../SavingProducts';
 import SavingResults from '../SavingResults';
 import { useState } from 'react';

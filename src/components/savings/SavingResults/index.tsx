@@ -1,6 +1,6 @@
 import { Border, ListHeader, Spacing } from 'tosslib';
-import useSavingsStore from '../../store/savings/useSavingsStore';
-import useSavingsProduct from '../../api/savings/savings.query';
+import useSavingsStore from '../../../store/savings/useSavingsStore';
+import useSavingsProduct from '../../../api/savings/savings.query';
 import { useMemo } from 'react';
 import SavingExpectedResults from '../SavingExpectedResults';
 import SavingRecommendResults from '../SavingRecommendResults';

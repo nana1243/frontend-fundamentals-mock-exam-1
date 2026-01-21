@@ -1,15 +1,19 @@
-import { SavingsProductList } from '../../api/savings/savings.schema';
-import { colors, ListRow } from 'tosslib';
+import { Assets, colors, ListRow, Spacing } from 'tosslib';
+import useSavingsProduct from '../../../api/savings/savings.query';
 
-interface SavingRecommendResultsProps {
-  recommendProducts: SavingsProductList;
+interface SavingProductsProps {
+  selectedProductId: string;
+  handleClick: (itemId: string) => void;
 }
 
-const SavingRecommendResults = (props: SavingRecommendResultsProps) => {
-  const { recommendProducts } = props;
+const SavingProducts = (props: SavingProductsProps) => {
+  const { selectedProductId, handleClick } = props;
+  const { data } = useSavingsProduct();
+
   return (
     <>
-      {recommendProducts?.map(item => (
+      <Spacing size={8} />
+      {data?.map(item => (
         <ListRow
           key={item.id}
           contents={
@@ -23,11 +27,12 @@ const SavingRecommendResults = (props: SavingRecommendResultsProps) => {
               bottomProps={{ fontSize: 13, color: colors.grey600 }}
             />
           }
-          onClick={() => {}}
+          right={selectedProductId === item.id ? <Assets.Icon name="icon-check-circle-green" /> : null}
+          onClick={() => handleClick(item.id)}
         />
       ))}
     </>
   );
 };
 
-export default SavingRecommendResults;
+export default SavingProducts;

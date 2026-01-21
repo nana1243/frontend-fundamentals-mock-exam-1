@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import Input from '../ui/Input';
+import Input from '../../ui/Input';
 import { Spacing } from 'tosslib';
-import Select from '../ui/Select';
-import { USER_INPUT_CONFIG } from '../../constants/savings';
-import useSavingsStore from '../../store/savings/useSavingsStore';
+import Select from '../../ui/Select';
+import { USER_INPUT_CONFIG } from '../../../constants/savings';
+import useSavingsStore from '../../../store/savings/useSavingsStore';
 
 const SavingUserInputLayout = ({ onChange }) => {
   const userInputSavingValues = useSavingsStore(state => state.userInputSavingValues);

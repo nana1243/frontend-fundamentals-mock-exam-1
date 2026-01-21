@@ -1,7 +1,7 @@
 import { Border, NavigationBar, Spacing } from 'tosslib';
-import SavingUserInputLayout from '../components/SavingsUserInputLayout';
+import SavingUserInputLayout from '../components/savings/SavingsUserInputLayout';
 import { useState } from 'react';
-import SavingsResultLayout from '../components/SavingsResultLayout';
+import SavingsResultLayout from '../components/savings/SavingsResultLayout';
 import { TAB_VALUES } from '../constants/savings';
 import useSavingsStore from '../store/savings/useSavingsStore';
 
