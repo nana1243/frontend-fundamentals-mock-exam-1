@@ -1,12 +1,14 @@
 import { Assets, colors, ListRow, Spacing } from 'tosslib';
 import useSavingsProduct from '../../api/savings/savings.query';
-import useSavingsStore from '../../store/savings/useSavingsStore';
 
-const SavingProducts = () => {
-  const { data, isLoading, isError } = useSavingsProduct();
-  const { setUserInputValues } = useSavingsStore();
+interface SavingProductsProps {
+  selectedProductId: string;
+  handleClick: (itemId: string) => void;
+}
 
-  const handleClick = () => {};
+const SavingProducts = (props: SavingProductsProps) => {
+  const { selectedProductId, handleClick } = props;
+  const { data } = useSavingsProduct();
 
   return (
     <>
@@ -25,8 +27,8 @@ const SavingProducts = () => {
               bottomProps={{ fontSize: 13, color: colors.grey600 }}
             />
           }
-          right={<Assets.Icon name="icon-check-circle-green" />}
-          onClick={() => {}}
+          right={selectedProductId === item.id ? <Assets.Icon name="icon-check-circle-green" /> : null}
+          onClick={() => handleClick(item.id)}
         />
       ))}
     </>
