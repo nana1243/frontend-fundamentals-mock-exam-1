@@ -5,18 +5,19 @@ import SavingsResultLayout from '../components/savings/SavingsResultLayout';
 import { TAB_VALUES } from '../constants/savings';
 import useSavingsStore from '../store/savings/useSavingsStore';
 
+type UserInputIds = 'targetAmount' | 'monthlyAmount' | 'period';
+type TabValue = (typeof TAB_VALUES)[number]['value'];
+
 export function SavingsCalculatorPage() {
-  const [tabValue, setTabValue] = useState(TAB_VALUES[0].value);
+  const [tabValue, setTabValue] = useState<TabValue>(TAB_VALUES[0].value);
 
   const { setUserInputValues } = useSavingsStore();
 
-  const handleUserInputChange = (id, targetData) => {
-    console.log('id, targetData', id, targetData);
+  const handleUserInputChange = (id: UserInputIds, targetData: number) => {
     setUserInputValues({ [id]: targetData });
   };
 
-  const handleTabChange = (value: string) => {
-    console.log('Selected Tab:', value);
+  const handleTabChange = (value: TabValue) => {
     setTabValue(value);
   };
 
