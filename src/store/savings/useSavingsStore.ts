@@ -6,7 +6,7 @@ import { calculateRecommendedMonthlyAmount } from '../../utils/calculateRecommen
 const initialState = {
   userInputSavingValues: {
     targetAmount: 0,
-    currentAmount: 0,
+    monthlyAmount: 0,
     period: 12,
   },
 };
@@ -20,8 +20,8 @@ const useSavingsStore = create(
         },
       })),
     getExpectedSavingResults: (annualRate: number) => {
-      const { currentAmount, period, targetAmount } = get().userInputSavingValues;
-      const expectedTotalAmount = calculateSavingsResults(currentAmount, period, annualRate);
+      const { monthlyAmount, period, targetAmount } = get().userInputSavingValues;
+      const expectedTotalAmount = calculateSavingsResults(monthlyAmount, period, annualRate);
       const difference = targetAmount - expectedTotalAmount;
       const recommendedMonthlyAmount = calculateRecommendedMonthlyAmount(targetAmount, period, annualRate);
       return {
