@@ -4,15 +4,17 @@ import SavingProducts from '../SavingProducts';
 import SavingResults from '../SavingResults';
 import { useState } from 'react';
 
+type TabValue = (typeof TAB_VALUES)[number]['value'];
+
 interface SavingsResultLayoutProps {
-  handleOnChange: (value: string) => void;
-  tabValue: string;
+  handleOnChange: (value: TabValue) => void;
+  tabValue: TabValue;
 }
 
 const SavingsResultLayout = (props: SavingsResultLayoutProps) => {
   const { handleOnChange, tabValue } = props;
 
-  const [selectedProductId, setSelectedProductId] = useState<string>(null);
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
 
   const handleItemClick = (itemId: string) => {
     setSelectedProductId(itemId);
@@ -27,10 +29,8 @@ const SavingsResultLayout = (props: SavingsResultLayoutProps) => {
           </TabComponent.Item>
         ))}
       </TabComponent>
-      {tabValue === TAB_VALUES[0].value && (
-        <SavingProducts selectedProductId={selectedProductId} handleClick={handleItemClick} />
-      )}
-      {tabValue === TAB_VALUES[1].value && <SavingResults selectedProductId={selectedProductId} />}
+      {tabValue === 'PRODUCT' && <SavingProducts selectedProductId={selectedProductId} handleClick={handleItemClick} />}
+      {tabValue === 'RESULT' && <SavingResults selectedProductId={selectedProductId} />}
     </>
   );
 };
