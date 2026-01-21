@@ -6,7 +6,7 @@ import SavingExpectedResults from '../SavingExpectedResults';
 import SavingRecommendResults from '../SavingRecommendResults';
 
 interface SavingResultsProps {
-  selectedProductId?: string;
+  selectedProductId?: string | null;
 }
 
 const SavingResults = (props: SavingResultsProps) => {
@@ -28,8 +28,6 @@ const SavingResults = (props: SavingResultsProps) => {
   const recommendProducts = useMemo(() => {
     return getRecommendProduct(userInputSavingValues.monthlyAmount, userInputSavingValues.period) ?? [];
   }, [userInputSavingValues.monthlyAmount, userInputSavingValues.period, getRecommendProduct]);
-
-  console.log('recommendProducts', recommendProducts);
 
   return (
     <>
