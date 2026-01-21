@@ -2,11 +2,11 @@ import { colors, ListRow, Spacing } from 'tosslib';
 
 interface SavingExpectedResultsProps {
   selectedProductId?: string;
-  listRowConfigData?: Array<{ top: string; bottom: string }>;
+  calculateResults?: Array<{ top: string; bottom: string }>;
 }
 
 const SavingExpectedResults = (props: SavingExpectedResultsProps) => {
-  const { selectedProductId, listRowConfigData } = props;
+  const { selectedProductId, calculateResults } = props;
   return (
     <>
       <Spacing size={8} />
@@ -17,7 +17,7 @@ const SavingExpectedResults = (props: SavingExpectedResultsProps) => {
         </>
       ) : (
         <>
-          {listRowConfigData?.map((item, index) => (
+          {calculateResults?.map((item, index) => (
             <ListRow
               key={index}
               contents={
