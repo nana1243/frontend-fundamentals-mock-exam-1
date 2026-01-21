@@ -7,7 +7,6 @@ import useSavingsStore from '../../store/savings/useSavingsStore';
 
 const SavingUserInputLayout = ({ onChange }) => {
   const userInputSavingValues = useSavingsStore(state => state.userInputSavingValues);
-  console.log('setUserInputValues', userInputSavingValues);
   const INPUT_COMPONENTS: Record<string, any> = {
     input: Input,
     select: Select,
