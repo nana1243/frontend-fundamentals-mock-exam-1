@@ -2,6 +2,7 @@ import TabComponent from '../ui/Tab';
 import { TAB_VALUES } from '../../constants/savings';
 import SavingProducts from '../SavingProducts';
 import SavingResults from '../SavingResults';
+import { useState } from 'react';
 
 interface SavingsResultLayoutProps {
   handleOnChange: (value: string) => void;
@@ -10,6 +11,13 @@ interface SavingsResultLayoutProps {
 
 const SavingsResultLayout = (props: SavingsResultLayoutProps) => {
   const { handleOnChange, tabValue } = props;
+
+  const [selectedProductId, setSelectedProductId] = useState<string>(null);
+
+  const handleItemClick = (itemId: string) => {
+    setSelectedProductId(itemId);
+  };
+
   return (
     <>
       <TabComponent onChange={handleOnChange}>
@@ -19,8 +27,10 @@ const SavingsResultLayout = (props: SavingsResultLayoutProps) => {
           </TabComponent.Item>
         ))}
       </TabComponent>
-      {tabValue === TAB_VALUES[0].value && <SavingProducts />}
-      {tabValue === TAB_VALUES[1].value && <SavingResults />}
+      {tabValue === TAB_VALUES[0].value && (
+        <SavingProducts selectedProductId={selectedProductId} handleClick={handleItemClick} />
+      )}
+      {tabValue === TAB_VALUES[1].value && <SavingResults selectedProductId={selectedProductId} />}
     </>
   );
 };
