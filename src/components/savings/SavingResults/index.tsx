@@ -9,6 +9,16 @@ interface SavingResultsProps {
   selectedProductId?: string | null;
 }
 
+const SavingContentStyles = () => {
+  return (
+    <>
+      <Spacing size={8} />
+      <Border height={16} />
+      <Spacing size={8} />
+    </>
+  );
+};
+
 const SavingResults = (props: SavingResultsProps) => {
   const { selectedProductId } = props;
   const { data } = useSavingsProduct(selectedProductId);
@@ -31,16 +41,8 @@ const SavingResults = (props: SavingResultsProps) => {
 
   return (
     <>
-      <Spacing size={8} />
-
       <SavingExpectedResults selectedProductId={selectedProductId} listRowConfigData={listRowConfigData} />
-      <Spacing size={8} />
-      <Border height={16} />
-      <Spacing size={8} />
-
-      <ListHeader title={<ListHeader.TitleParagraph fontWeight="bold">추천 상품 목록</ListHeader.TitleParagraph>} />
-      <Spacing size={12} />
-
+      <SavingContentStyles />
       <SavingRecommendResults recommendProducts={recommendProducts} />
     </>
   );
