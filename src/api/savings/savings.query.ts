@@ -14,11 +14,15 @@ export default function useSavingsProduct(productId?: string) {
     },
   });
   const getRecommendProduct = (monthlyAmount?: number, period?: number) => {
+    console.log(monthlyAmount, period);
+
     if (!data || !monthlyAmount || !period) {
       return null;
     }
 
-    return data.find(product => product.minMonthlyAmount <= monthlyAmount && product.availableTerms >= period) || null;
+    return (
+      data.filter(product => product.minMonthlyAmount <= monthlyAmount && product.availableTerms >= period) || null
+    );
   };
 
   return {

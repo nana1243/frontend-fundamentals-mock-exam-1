@@ -19,7 +19,9 @@ const useSavingsStore = create(
           ...data,
         },
       })),
-    getExpectedSavingResults: (annualRate: number) => {
+    getExpectedSavingResults: (
+      annualRate: number
+    ): { expectedTotalAmount: number; difference: number; recommendedMonthlyAmount: number } => {
       const { monthlyAmount, period, targetAmount } = get().userInputSavingValues;
       const expectedTotalAmount = calculateSavingsResults(monthlyAmount, period, annualRate);
       const difference = targetAmount - expectedTotalAmount;

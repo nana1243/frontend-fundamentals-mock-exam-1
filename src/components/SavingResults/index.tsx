@@ -1,4 +1,4 @@
-import { Border, colors, ListHeader, ListRow, Spacing } from 'tosslib';
+import { Border, ListHeader, Spacing } from 'tosslib';
 import useSavingsStore from '../../store/savings/useSavingsStore';
 import useSavingsProduct from '../../api/savings/savings.query';
 import { useMemo } from 'react';
@@ -13,11 +13,12 @@ const SavingResults = (props: SavingResultsProps) => {
   const { selectedProductId } = props;
   const { data } = useSavingsProduct(selectedProductId);
   const { getRecommendProduct } = useSavingsProduct();
-  const { getExpectedSavingResults } = useSavingsStore();
+  const userInputSavingValues = useSavingsStore(state => state.userInputSavingValues);
+  const getExpectedSavingResults = useSavingsStore(state => state.getExpectedSavingResults);
 
   const expectedResults = useMemo(() => {
     return getExpectedSavingResults(data?.annualRate);
-  }, [data?.annualRate, getExpectedSavingResults]);
+  }, [data?.annualRate, getExpectedSavingResults, userInputSavingValues]);
 
   const listRowConfigData = [
     { top: '예상 수익 금액', bottom: `${expectedResults.expectedTotalAmount.toLocaleString()}원` },
@@ -25,8 +26,8 @@ const SavingResults = (props: SavingResultsProps) => {
     { top: '추천 월 납입 금액', bottom: `${expectedResults.recommendedMonthlyAmount.toLocaleString()}원` },
   ];
   const recommendProducts = useMemo(() => {
-    return getRecommendProduct(expectedResults.monthlyAmount, expectedResults.period);
-  }, [expectedResults.monthlyAmount, expectedResults.period, getRecommendProduct]);
+    return getRecommendProduct(userInputSavingValues.monthlyAmount, userInputSavingValues.period) ?? [];
+  }, [userInputSavingValues.monthlyAmount, userInputSavingValues.period, getRecommendProduct]);
 
   console.log('recommendProducts', recommendProducts);
 
