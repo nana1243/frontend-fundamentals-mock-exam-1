@@ -19,6 +19,10 @@ const INPUT_COMPONENTS: Record<string, typeof Input | typeof Select> = {
 const SavingUserInputLayout = ({ onChange }: SavingUserInputLayoutProps) => {
   const userInputSavingValues = useSavingsStore(state => state.userInputSavingValues);
 
+  const handleOnChange = (id: UserInputIds, val: number) => {
+    onChange(id, val);
+  };
+
   return (
     <>
       {USER_INPUT_CONFIG.map((data, index) => {
@@ -28,21 +32,16 @@ const SavingUserInputLayout = ({ onChange }: SavingUserInputLayoutProps) => {
           return null;
         }
 
-        const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-          onChange(id as UserInputIds, Number(e.target.value));
-        };
-
-        const handleSelectChange = (value: number) => {
-          onChange(id as UserInputIds, value);
-        };
-
         return (
           <Fragment key={data.id}>
             {index !== 0 && <Spacing size={16} />}
             <Component
               {...restProps}
               value={userInputSavingValues && userInputSavingValues[data.id]}
-              onChange={data.type === 'input' ? handleInputChange : handleSelectChange}
+              onChange={val => {
+                const finalValue = val?.target ? val.target.value : val;
+                handleOnChange(data.id, finalValue);
+              }}
             >
               {type === 'select'
                 ? selectOptions?.map(option => (
