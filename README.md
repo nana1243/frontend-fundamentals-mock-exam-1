@@ -1,4 +1,5 @@
-# Frontend Fundamentals 모의고사
+# 적금 계산기 프로젝트
+(해당 프로젝트는 토스에서 제공하는 UI 컴포넌트 라이브러리인 `@toss/ui`를 활용하여 적금 계산기 애플리케이션을 구현한 예제입니다.)
 
 ## Getting started
 
@@ -6,7 +7,14 @@
 yarn dev
 ```
 
-🏗️ 디렉토리 구조
+## 화면
+<img width="1510" height="731" alt="스크린샷 2026-01-25 오전 10 52 59" src="https://github.com/user-attachments/assets/a7563b09-9753-449e-a269-db2d38046b3d" />
+
+<img width="1490" height="726" alt="스크린샷 2026-01-25 오전 10 53 53" src="https://github.com/user-attachments/assets/3abd4aaa-d4b1-4bc1-a591-1e0be0629593" />
+
+
+
+### 🏗️ 디렉토리 구조
 ```
 src/
 ├── api/              # API 통신 레이어
@@ -20,7 +28,7 @@ src/
 └── utils/           # 유틸리티 함수
 
 ```
-🎯 설계 
+### 🎯 설계 
 
 1. 레이어드 아키텍처
 
